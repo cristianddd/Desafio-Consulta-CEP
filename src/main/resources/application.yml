@@ -1,0 +1,22 @@
+server:
+  port: 8079
+
+spring:
+  application:
+    name: desafio-stefanini-cep
+
+cep:
+  api:
+    base-url: http://localhost:8081
+
+aws:
+  region: sa-east-1
+  dynamodb:
+    endpoint: http://localhost:4566
+    accessKey: test
+    secretKey: test
+
+logging:
+  level:
+    root: INFO
+    com.stefanini.desafio: DEBUG
