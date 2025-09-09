@@ -1,0 +1,19 @@
+{
+  "request": {
+    "method": "GET",
+    "urlPathPattern": "/30140071/json"
+  },
+  "response": {
+    "status": 200,
+    "jsonBody": {
+      "cep": "30140-071",
+      "logradouro": "Avenida do Contorno",
+      "bairro": "Funcionários",
+      "localidade": "Belo Horizonte",
+      "uf": "MG"
+    },
+    "headers": {
+      "Content-Type": "application/json"
+    }
+  }
+}

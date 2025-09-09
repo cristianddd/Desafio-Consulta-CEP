@@ -1,0 +1,19 @@
+{
+  "request": {
+    "method": "GET",
+    "urlPathPattern": "/20040002/json"
+  },
+  "response": {
+    "status": 200,
+    "jsonBody": {
+      "cep": null,
+      "logradouro": "Rua da Quitanda",
+      "bairro": "Centro",
+      "localidade": "Rio de Janeiro",
+      "uf": "RJ"
+    },
+    "headers": {
+      "Content-Type": "application/json"
+    }
+  }
+}
