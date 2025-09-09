@@ -6,7 +6,7 @@ import org.springframework.http.HttpStatusCode;
 public class CepNotFoundException extends RuntimeException {
 
     private final HttpStatusCode status;
-    private final String msg;
+    private final Object msg;
 
     public CepNotFoundException(HttpStatusCode status, String msg) {
         super();
@@ -18,7 +18,7 @@ public class CepNotFoundException extends RuntimeException {
         return status;
     }
 
-    public String getMsg() {
+    public Object getMsg() {
         return msg;
     }
 }

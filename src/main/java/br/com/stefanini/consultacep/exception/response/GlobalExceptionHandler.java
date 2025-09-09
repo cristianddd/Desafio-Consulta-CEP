@@ -2,6 +2,7 @@ package br.com.stefanini.consultacep.exception.response;
 
 import br.com.stefanini.consultacep.exception.CepNotFoundException;
 import br.com.stefanini.consultacep.exception.DynamoDbErroException;
+import br.com.stefanini.consultacep.exception.ErroChamadaApiException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -19,8 +20,7 @@ public class GlobalExceptionHandler {
         BaseExceptionResponse body = new BaseExceptionResponse();
                 body.setTimestamp(LocalDateTime.now());
                 body.setStatus(ex.getStatus().value());
-                body.setError(ex.getMsg());
-                body.setMessage(ex.getMessage());
+                body.setError(ex.getMsg().toString());
 
         return body;
     }
@@ -29,9 +29,17 @@ public class GlobalExceptionHandler {
         BaseExceptionResponse body = new BaseExceptionResponse();
                 body.setTimestamp(LocalDateTime.now());
                 body.setStatus(ex.getStatus().value());
-                body.setError(ex.getMsg());
-                body.setMessage(ex.getMessage());
+                body.setError(ex.getMsg().toString());
 
+        return body;
+    }
+
+    @ExceptionHandler(ErroChamadaApiException.class)
+    public BaseExceptionResponse handleCepNotFound(ErroChamadaApiException ex) {
+        BaseExceptionResponse body = new BaseExceptionResponse();
+                body.setTimestamp(LocalDateTime.now());
+                body.setStatus(ex.getStatus().value());
+                body.setError(ex.getMsg().toString());
         return body;
     }
 }

@@ -11,7 +11,6 @@ import java.time.LocalDateTime;
 @Builder
 public class BaseExceptionResponse {
     private LocalDateTime timestamp;
-    private String message;
     private String error;
     private Integer status;
 
@@ -21,14 +20,6 @@ public class BaseExceptionResponse {
 
     public void setTimestamp(LocalDateTime timestamp) {
         this.timestamp = timestamp;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
     }
 
     public String getError() {

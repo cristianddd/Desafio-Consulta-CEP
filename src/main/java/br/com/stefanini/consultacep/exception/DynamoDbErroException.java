@@ -5,9 +5,9 @@ import org.springframework.http.HttpStatusCode;
 
 public class DynamoDbErroException extends RuntimeException {
     private final HttpStatusCode status;
-    private final String msg;
+    private final Object msg;
 
-    public DynamoDbErroException(HttpStatus status, String msg) {
+    public DynamoDbErroException(HttpStatus status, Object msg) {
         super();
         this.status = status;
         this.msg = msg;
@@ -17,7 +17,7 @@ public class DynamoDbErroException extends RuntimeException {
         return status;
     }
 
-    public String getMsg() {
+    public Object getMsg() {
         return msg;
     }
 }
