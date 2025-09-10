@@ -255,7 +255,7 @@ aws --endpoint-url=http://localhost:4566 dynamodb create-table --table-name log_
 * **Feign Client**: adotado para tornar a integração HTTP com a API externa mais simples, declarativa e desacoplada.
 * **Testes unitários**: criados para validar as regras de negócio do CepServiceImpl e o comportamento do CepController, utilizando mocks de dependências.
 * **Swagger/OpenAPI**: integrado via springdoc-openapi-starter-webmvc-ui, garantindo documentação viva e interativa para os endpoints.
-* **RestClient**: simples, síncrono, fluente — adequado para esse fluxo bloqueante.
+* **RestClient(versão inicial)**: foi substituído por Feign para reforçar o dominio com spring.
 * **Localstack + DynamoDB**: permite demonstrar integração com AWS sem custos reais.
 * **WireMock em Docker**: garante mocks reprodutíveis; diretório montado facilita edição local.
 * **Logs no DB**: salva resposta completa e tempo de execução para auditoria e diagnóstico.
