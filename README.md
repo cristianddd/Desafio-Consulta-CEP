@@ -34,7 +34,8 @@
 
 * Java 17+ (compatível com 11+)
 * Spring Boot 3.x
-* Spring RestClient (API síncrona)
+* Spring Cloud OpenFeign (Feign Client para chamadas HTTP externas)
+* Springdoc OpenAPI (Swagger UI para documentação e exploração dos endpoints)
 * Docker (WireMock + Localstack)
 * WireMock (mock da API de CEP)
 * Localstack (simula serviços AWS — DynamoDB)
@@ -42,6 +43,7 @@
 * Maven
 * Logback (logging)
 * Lombok
+* JUnit + Mockito (testes unitários cobrindo services e controllers)
 * cURL / Postman para testes
 
 ---
@@ -226,6 +228,13 @@ aws --endpoint-url=http://localhost:4566 dynamodb create-table --table-name log_
    aws --endpoint-url=http://localhost:4566 dynamodb scan --table-name log_consulta
    ```
 
+6. Acesse a documentação Swagger/OpenAPI no navegador:
+
+   ```bash
+   http://localhost:8079/swagger-ui/index.html
+
+   ```
+
 ---
 
 ## 10. Exceções e tratamento de erros
@@ -243,6 +252,9 @@ aws --endpoint-url=http://localhost:4566 dynamodb create-table --table-name log_
 
 ## 11. Estratégias e decisões técnicas
 
+* **Feign Client**: adotado para tornar a integração HTTP com a API externa mais simples, declarativa e desacoplada.
+* **Testes unitários**: criados para validar as regras de negócio do CepServiceImpl e o comportamento do CepController, utilizando mocks de dependências.
+* **Swagger/OpenAPI**: integrado via springdoc-openapi-starter-webmvc-ui, garantindo documentação viva e interativa para os endpoints.
 * **RestClient**: simples, síncrono, fluente — adequado para esse fluxo bloqueante.
 * **Localstack + DynamoDB**: permite demonstrar integração com AWS sem custos reais.
 * **WireMock em Docker**: garante mocks reprodutíveis; diretório montado facilita edição local.
