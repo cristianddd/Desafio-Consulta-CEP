@@ -1,14 +1,13 @@
-package br.com.stefanini.consultacep.service;
+package br.com.stefanini.service;
 
-import br.com.stefanini.consultacep.client.CepClient;
-import br.com.stefanini.consultacep.controller.CepController;
-import br.com.stefanini.consultacep.dto.EnderecoResponseDTO;
-import br.com.stefanini.consultacep.exception.CepNotFoundException;
-import br.com.stefanini.consultacep.exception.DynamoDbErroException;
-import br.com.stefanini.consultacep.exception.ErroChamadaApiException;
-import br.com.stefanini.consultacep.service.interfaces.CepService;
+import br.com.stefanini.client.CepClient;
+import br.com.stefanini.controller.CepController;
+import br.com.stefanini.dto.EnderecoResponseDTO;
+import br.com.stefanini.exception.CepNotFoundException;
+import br.com.stefanini.exception.DynamoDbErroException;
+import br.com.stefanini.exception.ErroChamadaApiException;
+import br.com.stefanini.service.interfaces.CepService;
 import com.google.gson.Gson;
-import lombok.extern.log4j.Log4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +25,6 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.UUID;
 
-@Log4j
 @Service
 public class CepServiceImpl implements CepService {
     @Autowired
@@ -42,7 +40,7 @@ public class CepServiceImpl implements CepService {
         try {
              response = cepClient.buscarCep(cep);
 
-            if (Objects.isNull(response) || response.getCep() == null) {
+            if (Objects.isNull(response)) {
                 logger.warn("CEP não encontrado: {}", cep);
                 throw new CepNotFoundException(HttpStatus.NOT_FOUND, "CEP não encontrado: " + cep);
             }
@@ -55,15 +53,12 @@ public class CepServiceImpl implements CepService {
         } catch (DynamoDbException e){
             logger.error("Erro inesperado ao conectar ao Banco de Dados. Erro: {}", cep, e);
             throw new DynamoDbErroException(HttpStatus.INTERNAL_SERVER_ERROR, "Erro ao se conectar ao Banco de Dados.");
-        }catch (Exception e) {
-            logger.error("Erro inesperado ao consultar CEP {}", cep, e);
-            throw new Exception("Erro ao consultar serviço externo de CEP", e);
         }
 
         return response;
     }
 
-    private void salvarLog(EnderecoResponseDTO response) throws ErroChamadaApiException {
+    private void salvarLog(EnderecoResponseDTO response) {
         Map<String, AttributeValue> item = new HashMap<>();
         Gson gson = new Gson();
 
@@ -78,6 +73,5 @@ public class CepServiceImpl implements CepService {
                 .item(item)
                 .build());
         logger.info("Item salvo com sucesso no DynamoDB");
-
     }
 }

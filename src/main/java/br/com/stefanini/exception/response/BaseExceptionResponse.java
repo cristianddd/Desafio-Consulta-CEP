@@ -1,4 +1,4 @@
-package br.com.stefanini.consultacep.exception.response;
+package br.com.stefanini.exception.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

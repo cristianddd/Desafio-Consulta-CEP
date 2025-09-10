@@ -1,4 +1,4 @@
-package br.com.stefanini.consultacep.config;
+package br.com.stefanini.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

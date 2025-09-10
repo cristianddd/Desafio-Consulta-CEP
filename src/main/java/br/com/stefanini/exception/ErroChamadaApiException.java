@@ -1,4 +1,4 @@
-package br.com.stefanini.consultacep.exception;
+package br.com.stefanini.exception;
 
 import org.springframework.http.HttpStatus;
 
