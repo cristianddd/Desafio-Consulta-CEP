@@ -141,7 +141,7 @@ aws:
     secretKey: test
 
 server:
-  port: 8080
+  port: 8079
 ```
 
 * `region` é livre para testes (Localstack aceita a maioria das regiões); usei `sa-east-1` por convenção. Para demonstrar, você pode trocar para `us-east-1`.
