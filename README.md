@@ -22,7 +22,7 @@
 
 ## 1. O que a aplicação faz
 
-* Expõe um endpoint REST: `GET /api/v1/ceps/{cep}`.
+* Expõe um endpoint REST: `GET /api/ceps/{cep}`.
 * Valida o CEP (formato: 8 dígitos numéricos).
 * Consulta uma API externa de CEP (mockada localmente com WireMock ou real ViaCEP em produção) usando **RestClient**.
 * Persiste um log da consulta no **DynamoDB** (simulado via Localstack): inclui id, cep, response JSON, dataHora.
